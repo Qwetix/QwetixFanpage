@@ -2,24 +2,24 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Sprawdź swoje IP</title>
+  <title>Twoje IP i lokalizacja</title>
 </head>
 <body style="text-align:center; font-family:Arial; margin-top:100px;">
 
-  <h1>Twoje publiczne IP:</h1>
-  <h2 id="ip">Sprawdzanie...</h2>
+  <h1>Twoje publiczne IP i lokalizacja:</h1>
+  <h2 id="info">Ładowanie...</h2>
 
   <script>
-    fetch("https://api.ipify.org?format=json")
+    fetch("https://ipapi.co/json/")
       .then(response => response.json())
       .then(data => {
-        document.getElementById("ip").textContent = data.ip;
+        document.getElementById("info").textContent = 
+          `IP: ${data.ip} | Miasto: ${data.city} | Region: ${data.region} | Kraj: ${data.country_name}`;
       })
       .catch(() => {
-        document.getElementById("ip").textContent = "Nie udało się pobrać IP";
+        document.getElementById("info").textContent = "Nie udało się pobrać danych";
       });
   </script>
 
 </body>
 </html>
-
