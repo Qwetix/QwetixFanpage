@@ -1,1 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sprawdź swoje IP</title>
+</head>
+<body style="text-align:center; font-family:Arial; margin-top:100px;">
+
+  <h1>Twoje publiczne IP:</h1>
+  <h2 id="ip">Sprawdzanie...</h2>
+
+  <script>
+    fetch("https://api.ipify.org?format=json")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("ip").textContent = data.ip;
+      })
+      .catch(() => {
+        document.getElementById("ip").textContent = "Nie udało się pobrać IP";
+      });
+  </script>
+
+</body>
+</html>
 
